@@ -1,0 +1,137 @@
+.red_round{
+  color:#ff0000;
+  font-size:25px;
+}
+.outer_included, .outer{ clear: both;
+  position: relative !important;
+  display: block  !important;}
+.removeclass {
+  font-size: 25px;
+  float: right;
+  position: absolute;
+  top: -48px;
+}
+
+.icon-bx a .fa-eye { color:#27ae60}
+.icon-bx button .fa-ban { color:#e74c3c}
+.icon-bx button .fa-exclamation-triangle { color:#f39c12}
+
+.table-2{ margin: 10px 0px; width:60%!important;}
+.table-2 tr:nth-child(odd){ background: #dcdde1;}
+.table-2 tr:nth-child(even){ background: #ecf0f1;}
+
+.table-2 td:nth-child(1){ width:30%;}
+
+.user-Name{ padding-right: 10px;
+  display: table;
+  margin-top: 8px;
+  color: #0b6eb1; font-size: 14px;;
+  font-weight: 600; text-transform: uppercase; text-align:right; font-weight:bold;
+  float: left; line-height: 15px;}
+
+
+  .job-title-05{ font-size: 11px; color: rgb(159, 159, 159);}
+
+  .seller-pr25 .form-control{ width: 77%; float: left; margin-right: 5px;}
+
+  .seller-pr25 select{     padding: 7px 5px;
+      border: 1px solid #b1b7c1;   border-radius: 0.375rem;
+  }
+  
+  /* rating */
+.rating-css div {
+  color: #FFBA0A !important;
+  font-size: 15px !important;
+  font-family: sans-serif !important;
+  font-weight: 800 !important;
+  text-align: left!important;
+  text-transform: uppercase !important;
+  padding: 20px 0 !important;
+}
+.rating-css input {
+  display: none !important;
+}
+.rating-css input + label {
+  font-size: 30px !important;
+  text-shadow: 1px 1px 0 #8f8420 !important;
+  cursor: pointer !important;
+}
+.rating-css input:checked + label ~ label {
+  color: #b4afaf !important;
+}
+.rating-css label:active {
+  transform: scale(0.8) !important;
+  transition: 0.3s ease !important;
+}
+
+.rating-css div .product-review-form .review-form form .form-group label {
+
+  color: #ffe400 !important;
+}
+
+/* End of Star Rating */
+
+
+.stars {
+    color: #ffe400 !important;
+    font-size: 1.2em;
+}
+.colorfade { color:#b4afaf ; }
+
+.add-padding img {
+    height: 32px !important;
+    width: 23px !important;
+    border: 1px solid rgba(0,0,0,.125) !important;
+}
+.thumplist45 {
+    float: left !important;
+    margin-right: 5px !important;
+}
+.dataTables_wrapper .dataTables_processing {
+    position: fixed;
+    top: 50% !important;
+    right: 50%;
+}
+.loaderajax{
+position:fixed; left:0; right:0; margin: 0px auto; z-index: 99999999999999; 
+overflow:hidden;left:0;right:0; top:0; bottom:0; text-align:center; 
+}
+
+.loaderajax img{ width:100px; margin-top:1%; height:100px}
+
+
+#loadcntr{ background:#e55353; width:60px; height:60px; font-size:12px!important; text-align:center; line-height:60px; text-align:center; border-radius:50%;
+color:#fff!important; display:table; margin:0px auto; margin-top:17%; border:4px solid rgba (229, 83, 83, 0.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(0){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(1){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(7){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(8){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(9){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(10){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(11){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(12){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(13){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(14){ border:1px solid red!important; display:none !important;}
+    .tox-toolbar__primary .tox-toolbar__group:nth-child(15){ border:1px solid red!important; display:none !important;}
+    
+    .tox-menubar {
+    display: none !important;
+}
+
+
+.red_sus  { color:white;background-color:red !important;padding:5px;line-height:12px;border-radius:2px;margin-top:5px;display:inline-block; }
+.green_sus {color:white;background-color:green !important;padding:5px;line-height:12px;border-radius:2px;margin-top:5px;display:inline-block;}
+.current {background-color: #d83f3f;color:white;}

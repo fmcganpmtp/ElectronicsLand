@@ -1,0 +1,95 @@
+.dataTables_length,
+.dataTables_wrapper {
+  font-size: 1.6rem;
+}
+.dataTables_length select,
+.dataTables_length input,
+.dataTables_wrapper select,
+.dataTables_wrapper input {
+  background-color: #f9f9f9;
+  border: 1px solid #999;
+  border-radius: 4px;
+  height: 3rem;
+  line-height: 2;
+  font-size: 1.8rem;
+  color: #333;
+}
+.dataTables_length .dataTables_length,
+.dataTables_length .dataTables_filter,
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter {
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  display: inline-flex;
+}
+
+.paginate_button {
+  min-width: 4rem;
+  display: inline-block;
+  text-align: center;
+  padding: 1rem 1.6rem;
+  margin-top: -1rem;
+  border: 2px solid lightblue;
+}
+.paginate_button:not(.previous) {
+  border-left: none;
+}
+.paginate_button.previous {
+  border-radius: 8px 0 0 8px;
+  min-width: 7rem;
+}
+.paginate_button.next {
+  border-radius: 0 8px 8px 0;
+  min-width: 7rem;
+}
+.paginate_button:hover {
+  cursor: pointer;
+  background-color: #eee;
+  text-decoration: none;
+}
+
+/*data table*/
+table.dataTable thead .sorting_asc::after {
+  content: "\f0dc";font-family:FontAwesome; float:right;
+}
+
+table.dataTable thead .sorting::after {
+  opacity: 0.2;
+  content: "\f0dc";font-family:FontAwesome; float:right;
+}
+
+
+table.dataTable thead .sorting_desc::after {
+  content: "\f0dc"!important;font-family:FontAwesome!important; float:right;
+}
+
+.sorting_asc th{ font-size:14px!important;}
+.table > :not(caption) > * > * {
+  padding: 0.5rem 0.5rem;
+  background-color: var(--cui-table-bg);
+  border-bottom-width: 1px;
+  box-shadow: inset 0 0 0 9999px var(--cui-table-accent-bg);
+  font-size: 14px;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+  font-weight: normal;
+  text-align: left;
+  white-space: nowrap;
+  font-size: 13px;
+}
+#example_length{ display:none;}
+
+#example_filter{ display:none;}
+
+.table-striped th:last-child  .fa{ opacity:0!important;}
+.sct:after {
+  opacity: 0!important;
+  content: "\f0dc";
+  font-family: FontAwesome;
+  position: absolute;
+  top: 6px;
+}
+#example_info{ display:none;}
+#example_paginate{ display:none;}

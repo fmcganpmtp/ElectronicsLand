@@ -1,0 +1,417 @@
+@extends('layouts.template')
+@section('title', 'Business Insight')
+@section('content')
+
+
+
+<sectiion class="seller-page no-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="pr-bottom">
+          <div class="card">
+            <div class="slr-details">
+              <?php
+              if(!empty($user->profile_pic)) 
+              $img_path = asset('/uploads/userImages/').'/'.$user->profile_pic;
+              else  $img_path = asset('uploads/defaultImages/default_avatar.png');
+             if($user->varification_status=="varified") $active_class= " active-border";
+             //if($user->email_status=="Yes") $active_class= " active-border";
+             
+             else $active_class= "";
+              ?>
+              <div class="pr-logo {{$active_class}}"><img src="{{$img_path}}">
+                
+              </div>
+              <h2>{{ $user->BuyerCompany->company_name ?? '' }}</h2>
+              <div class="sl-tp01"> </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="seller-basic-top">
+                    <ul>
+                      <li><i class="fa fa-user" aria-hidden="true"></i>{{ $user->name ?? '' }}</li>
+                      <li><i class="fa fa-envelope-o" aria-hidden="true"></i>{{ $user->email ?? '' }}</li>
+                      <li><i class="fa fa-phone" aria-hidden="true"></i>{{ $user->phone ?? '' }}</li>
+                      <li><i class="fa fa-suitcase" aria-hidden="true"></i>{{ $user->position ?? '' }}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-12">
+                  <h3>Categories</h3>
+                  <ul class="cat-list">
+                    @if(!empty($categorylists))
+                    @foreach($categorylists as $categorylist)
+                    <li>{{$categorylist->name}}</li>
+                    @endforeach
+                    @else
+                    <p style="color:#ff0000;">No Categories</p>
+                    @endif
+                    
+                  </ul>
+                </div>
+                <div class="col-lg-4 col-12">
+                  <h3>Details</h3>
+                  <p> {{ $user->about ?? '' }}</p>
+                </div>
+                <div class="col-lg-4 col-12">
+                  <h3>Address</h3>
+                  <ul>
+                    <li>{{ $user->address ?? '' }}</li>
+                    <li> {{ $user->store_city ?? '' }} </li>
+                    <li>{{ $user->store_zip ?? '' }} </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+		  
+	
+		  
+		  
+		  
+		  
+		            <div class="card">
+            <div class="row">
+              <div class="col-lg-12">
+                <h3>Insights</h3>
+              </div>
+            </div>
+            <div class="ctr">
+              <div class="row">
+                @foreach($category_product_count as $data)
+                <div class="col-lg-3 col-12">
+                  <div class="counter blue">
+                    <div class="counter-icon"><?php 
+           
+            if((is_null($data['category']->category_pic)))
+                $img_url = asset('uploads/defaultImages/pop-ic-4.png');
+            else
+                 $img_url =asset('/uploads/categoryImages/'.$data['category']->category_pic); 
+    
+            ?><img src="{{ $img_url }}"></div>
+                    <span class="counter-value">{{$data['product_count']}}</span>
+                    <h4>{{$data['category']->name}}</h4>
+                  </div>
+                </div>
+                @endforeach
+               
+              </div>
+            </div>
+            <!--<div class="row">
+          	<div class="col-lg-12">
+            	<a href="" class="default-btn ctr mr-pro">View more products</a>
+            </div>
+          </div>-->
+          </div>
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+          <div class="card">
+            <!--      
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      
+         
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+
+<script>
+var xArray = ["Week 1", "Week 2", "Week 3", "Week 4", ];
+var yArray = [25, 25, 25, 25];
+
+var layout = {title:""};
+
+var data = [{labels:xArray, values:yArray, hole:.4, type:"pie"}];
+
+Plotly.newPlot("myPlot", data, layout);
+</script>
+-->
+            <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+            <!--         <div class="chart-out">
+              <canvas id="myChart"></canvas>
+            </div>-->
+            <div class="row my-2">
+              <div class="col-md-6 py-1">
+                <h3>Customer visit</h3>
+                <div class="card">
+                  <div class="card-body">
+                    <canvas id="chLine"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 py-1">
+                <h3>Last Week insight</h3>
+                <div class="card">
+                  <div class="color-denote">
+                    <label class="c-bx"><span class="grn"></span>Repeated users</label>
+                    <label class="c-bx"><span class="blu"></span>New users</label>
+                  </div>
+                  <div class="card-body">
+                    <canvas id="chBar"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+		  
+		  
+		  
+		  
+		          <div class="card ">
+            <div class="row">
+              <div class="col-lg-12">
+                <h3> Category list</h3>
+              </div>
+            </div>
+            <div class="tableC">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Sl no</th>
+                    <th>Category name</th>
+                    <th>No of visitors all</th>
+                    <th>Last week visit</th>
+                    <th> Last month</th>
+                    <th>Repeated visit count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach($categoryinsight as $list)
+                  <tr>
+                    <td>01</td>
+                    <td>{{$list->name}}</td>
+                    <td>{{$list->insight_count}}</td>
+                    <td>{{$list->week_count}}</td>
+                    <td>{{$list->month_count}}</td>
+                    <td>{{$list->repeat_count}}</td>
+                  </tr>
+                  @endforeach
+                  
+                </tbody>
+              </table>
+            </div>
+            <div class="right-paging">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="card ">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="h3-titile mr-btm">
+                  <h4>Products</h4>
+                  <div class="buyer-filt insight-srch">
+                    <form class="search-box" action="product-listing.php">
+                      <input type="text" placeholder="Search" class="form-control">
+                      <button type="submit" class="search-btn inner-srch"> <i class="ri-search-line"></i> </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+			
+			
+			            <div class="tableC">
+                    <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Sl no</th>
+                    <th>Product name</th>
+                    <th>No of visitors all</th>
+                    <th>Last week visit</th>
+                    <th> Last month</th>
+                    <th>Repeated visit count</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @foreach($productlists as $list)
+                  <tr>
+                    <td>01</td>
+                    <td>{{$list->name}}</td>
+                    <td>{{$list->insight_count}}</td>
+                    <td>{{$list->week_count}}</td>
+                    <td>{{$list->month_count}}</td>
+                    <td>{{$list->repeat_count}}</td>
+                  </tr>
+                  @endforeach
+                  
+                </tbody>
+              </table>
+            </div>
+            
+			
+			
+			
+			
+			
+			
+       
+          </div>  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+           
+      
+       
+      </div>
+    </div>
+  </div>
+  </div>
+</sectiion>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{{asset('/js/datatable.js')}}"></script>
+<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript">
+ 
+ var $ = jQuery;
+  (function($) {
+
+
+    var id = '12';
+
+
+    var viewurl="{{route('view.Sproduct', ':id')}}";
+
+    $('#btnsearch').click(function(){
+    dataTable.draw();
+    });
+    $("#search_key").keydown(function (event) { 
+     if (event.which == 13) { 
+         event.preventDefault();
+         dataTable.draw();
+     }
+    });
+   var dataTable = $('#datatable').DataTable({
+         processing: false,
+         serverSide: true,
+         'searching': false,
+         "lengthChange": false,
+         "order": [ 0,'desc'],
+         'ajax': {
+          'url':"{{ url('getSellerproductlistFrontEnd') }}",
+
+          'data': function(data){
+          _token="{{csrf_token()}}";
+          data.search_key = $("#search_key").val();
+          data.category_id =$("#category_id").val();  
+          data.stock = $("#stock").val(); 
+        },
+      
+    }, 
+   
+    "columnDefs":[
+      {
+       "targets":0, 
+       "orderable": true,
+       "visible":false
+      },
+      {
+       "targets":1, 
+       "orderable": false,
+       "render": function(data,type,full,meta)
+      {
+         return meta.row + meta.settings._iDisplayStart + 1;
+      }
+    },
+    {
+       "targets":[2,3,5], 
+       "orderable": false,
+      
+    },
+     
+  ],
+         columns: [
+          { data: 'id' },
+          { data: 'id' },
+          { data: 'strcat_parent' },
+          { data: 'strcat' } ,  
+          { data: 'name' },
+          { data: 'strimg' },
+          { data: 'status' },
+          { data: 'created_at' },
+           
+         ]
+      });     
+ })(jQuery);
+</script>
+
+<script type="text/javascript">
+     
+     var $ = jQuery;
+                (function($) {
+        $(document).ready( function ($) {
+           
+          loadproductss();
+        });
+      })(jQuery);
+
+
+
+
+
+
+
+
+
+ 
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+var yValues = [55, 49, 44, 24, 15];
+var barColors = ["red", "green","blue","orange","brown"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Graph Title"
+    }
+  }
+});
+</script>
+
+
+
+
+
+
+
+
+@endsection
+@section('footer_script')
+
+
+@endsection

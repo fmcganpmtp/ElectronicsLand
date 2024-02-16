@@ -1,0 +1,7 @@
+"product_description
+",currency,price,price_on_request,price_negotiable,sku,place_of_origin,unlimited_stock,avialable_stock,product_weight_size,description,categories,gallery,brands,bbd_expiry_date,minimal_order_quantity,product_condition,stock_location,label_language,pcs_box,pcs_pallet,box_pallet,"leadtime
+",ean_gtin,batch
+Product Name 1,&#8364;,200,Price on request,,SKU1,lll,Unlimited,10,2kg,gg,category>subcategory>nextsubcategory,https://hermosoftech-projects.in/fmcg/public/images/product-2.jpg,new,,1,,location,Etiket,"1
+",2,3,4444,1111,555
+Product Name2,&#8373;,400,,Negotiable,SKU2,kl,,21,111,vvvvvvv,category>subcategory,https://hermosoftech-projects.in/fmcg/public/images/product-2.jpg,Adidas,12-03-2023,3,,location name,,11,22,33,77,555544,1245
+,,,,,,,,,,,,,,,,,,,,,,,,
